@@ -29,8 +29,8 @@ Prechecks
 6. Make sure the kernel-headers are installed.
 
 Installation
-1. echo "deb https://raw.githubusercontent.com/pimox/pimox7/master/ dev/" > /etc/apt/sources.list.d/pimox.list
-2. curl https://raw.githubusercontent.com/pimox/pimox7/master/KEY.gpg |  apt-key add -
+1. echo "deb https://raw.githubusercontent.com/AlNedorezov/pimox7/master/ dev/" > /etc/apt/sources.list.d/pimox.list
+2. curl https://raw.githubusercontent.com/AlNedorezov/pimox7/master/KEY.gpg |  apt-key add -
 3. apt update
 4. apt install proxmox-ve (use a local attatched console! Network connections will be lost/reset during installation progress)
 
