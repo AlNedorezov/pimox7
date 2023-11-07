@@ -92,7 +92,7 @@ THE DHCP SERVER ($YELLOW dhcpcd5 $NORMAL) WILL BE $RED REMOVED $NORMAL !!!
 =========================================================================================
 THE PIMOX REPO WILL BE ADDED IN : $YELLOW /etc/apt/sources.list.d/pimox.list $NORMAL CONFIGURATION :
 $GRAY# Pimox 7 Development Repo$NORMAL
-deb https://raw.githubusercontent.com/pimox/pimox7/master/ dev/
+deb https://raw.githubusercontent.com/AlNedorezov/pimox7/master/ dev/
 =========================================================================================
 THE NETWORK CONFIGURATION IN : $YELLOW /etc/network/interfaces $NORMAL WILL BE $RED CHANGED $NORMAL !!! TO :
 auto lo
@@ -140,8 +140,8 @@ hostnamectl set-hostname $HOSTNAME
 
 #### ADD SOURCE PIMOX7 + KEY & UPDATE & INSTALL RPI-KERNEL-HEADERS #######################################################################
 printf "# PiMox7 Development Repo
-deb https://raw.githubusercontent.com/pimox/pimox7/master/ dev/ \n" > /etc/apt/sources.list.d/pimox.list
-curl https://raw.githubusercontent.com/pimox/pimox7/master/KEY.gpg |  apt-key add -
+deb https://raw.githubusercontent.com/AlNedorezov/pimox7/master/ dev/ \n" > /etc/apt/sources.list.d/pimox.list
+curl https://raw.githubusercontent.com/AlNedorezov/pimox7/master/KEY.gpg |  apt-key add -
 apt update && apt upgrade -y
 
 #### REMOVE DHCP, CLEAN UP ###############################################################################################################
@@ -189,7 +189,7 @@ iface vmbr0 inet static
 cp /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.auto.backup
 SEARCH="return Ext.String.format('"
 #### PLACE HOLDER BANNER BEGIN --> #### LINE 1 ####                                                     #### LINEBREAK #### -- #### LINE 2 #####
-REPLACE="return Ext.String.format(' This is a unofficial development build of PVE7 - PIMOX7 - https://github.com/pimox/pimox7  Build to run a PVE7 on the RPi4. ! ! ! NO GUARANTEE NOT OFFICIALLY SUPPORTED ! ! ! ');"
+REPLACE="return Ext.String.format(' This is a unofficial development build of PVE7 - PIMOX7 - https://github.com/AlNedorezov/pimox7  Build to run a PVE7 on the RPi4. ! ! ! NO GUARANTEE NOT OFFICIALLY SUPPORTED ! ! ! ');"
 sed -i "s|$SEARCH.*|$REPLACE|" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 
 ### FINAL MESSAGE ########################################################################################################################
