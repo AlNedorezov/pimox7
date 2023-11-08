@@ -34,7 +34,7 @@ Installation
 3. apt update
 4. apt install proxmox-ve (use a local attatched console! Network connections will be lost/reset during installation progress)
 
-If a static IP address configured in dhcp
+### If a static IP address configured in dhcp
 1. Set a password for root for a web gui login
 
 `sudo passwd`
