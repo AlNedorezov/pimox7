@@ -115,6 +115,29 @@ Installation
 
     after reboot the PVE web interface will be reachable at https://$HOSTNAME_IP_ADDRESS:8006/
 
+### Example VM configuration
+
+```
+agent: 1
+bios: ovmf
+boot: order=scsi0;scsi2;net0
+cores: 1
+efidisk0: local:100/base-100-disk-1.qcow2,efitype=4m,pre-enrolled-keys=1,size=64M
+memory: 2048
+meta: creation-qemu=7.0.0,ctime=1699409858
+name: vm100
+net0: virtio=4A:AE:C5:F6:00:9C,bridge=vmbr0,firewall=1
+numa: 0
+ostype: other
+scsi0: local:100/base-100-disk-0.qcow2,size=32G
+scsi2: local:iso/ubuntu-22.04.3-live-server-arm64.iso,media=cdrom,size=2021436K
+scsihw: virtio-scsi-pci
+smbios1: uuid=dedc20f5-b9f3-4b21-a9ad-276668451a20
+sockets: 1
+template: 1
+#qmdump#map:efidisk0:drive-efidisk0:local:qcow2:
+#qmdump#map:scsi0:drive-scsi0:local:qcow2:
+```
 
 Notes
 ---
