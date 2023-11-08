@@ -37,49 +37,49 @@ Installation
 ### If a static IP address configured in dhcp
 1. Set a password for root for a web gui login
 
-`sudo passwd`
+    `sudo passwd`
 
 2. Login as root
 
-`su -`
+    `su -`
 
 3. Add source pimox7 + key & update & install rpi-kernel-headers
 
-```
-printf "# PiMox7 Development Repo
-deb https://raw.githubusercontent.com/AlNedorezov/pimox7/master/ dev/ \n" > /etc/apt/sources.list.d/pimox.list
-```
-
-`curl https://raw.githubusercontent.com/AlNedorezov/pimox7/master/KEY.gpg |  apt-key add -`
-
-`apt update && apt upgrade -y`
+    ```
+    printf "# PiMox7 Development Repo
+    deb https://raw.githubusercontent.com/AlNedorezov/pimox7/master/ dev/ \n" > /etc/apt/sources.list.d/pimox.list
+    ```
+    
+    `curl https://raw.githubusercontent.com/AlNedorezov/pimox7/master/KEY.gpg |  apt-key add -`
+    
+    `apt update && apt upgrade -y`
 
 4. Make sure that your ip can be resolved to hostname
 
-`cat /etc/hosts`
-
-prints
-
-```
-127.0.0.1 localhost
-192.168.1.112 PVE_HOSTNAME
-```
-
-where 192.168.1.112 is the hostname ip address
+    `cat /etc/hosts`
+    
+    prints
+    
+    ```
+    127.0.0.1 localhost
+    192.168.1.112 PVE_HOSTNAME
+    ```
+    
+    where 192.168.1.112 is the hostname ip address
 
 5. Install pve-manager separately, and without recommended packages, to avoid packaging issue later
 
-`DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends -o Dpkg::Options::="--force-confdef" pve-manager`
+    `DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends -o Dpkg::Options::="--force-confdef" pve-manager`
 
 6. Continue with installation of remaining packages
 
-`DEBIAN_FRONTEND=noninteractive apt install -y -o Dpkg::Options::="--force-confdef" proxmox-ve`
+    `DEBIAN_FRONTEND=noninteractive apt install -y -o Dpkg::Options::="--force-confdef" proxmox-ve`
 
 7. Reboot
 
-`reboot`
+    `reboot`
 
-after reboot the PVE web interface will be reachable at https://$HOSTNAME_IP_ADDRESS:8006/
+    after reboot the PVE web interface will be reachable at https://$HOSTNAME_IP_ADDRESS:8006/
 
 
 Notes
