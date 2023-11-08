@@ -47,7 +47,7 @@ Installation
     su -
     ```
 
-4. Add source pimox7 + key & update & install rpi-kernel-headers
+3. Add source pimox7 + key & update & install rpi-kernel-headers
 
     ```
     printf "# PiMox7 Development Repo
@@ -62,7 +62,7 @@ Installation
     apt update && apt upgrade -y
     ```
 
-5. Make sure that your ip can be resolved to hostname
+4. Make sure that your ip can be resolved to hostname
 
     ```
     cat /etc/hosts
@@ -77,19 +77,37 @@ Installation
     
     where 192.168.1.112 is the hostname ip address
 
-7. Install pve-manager separately, and without recommended packages, to avoid packaging issue later
+5. Install pve-manager separately, and without recommended packages, to avoid packaging issue later
 
     ```
     DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends -o Dpkg::Options::="--force-confdef" pve-manager
     ```
 
-9. Continue with installation of remaining packages
+6. Continue with installation of remaining packages
 
     ```
     DEBIAN_FRONTEND=noninteractive apt install -y -o Dpkg::Options::="--force-confdef" proxmox-ve
     ```
 
-11. Reboot
+7. Configure network
+
+    ```
+    printf "auto lo
+    iface lo inet loopback
+    
+    iface eth0 inet manual
+    
+    auto vmbr0
+    iface vmbr0 inet static
+            address $HOSTNAME_IP_ADDRESS/24
+            gateway $GATEWAY_IP_ADDRESS
+            bridge-ports eth0
+            bridge-stp off
+            bridge-fd 0 \n" > /etc/network/interfaces.new
+    ```
+    where e.g. `$HOSTNAME_IP_ADDRESS`=192.168.1.112, and `$GATEWAY_IP_ADDRESS`=192.168.1.1
+
+8. Reboot
 
     ```
     reboot
